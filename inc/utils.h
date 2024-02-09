@@ -9,7 +9,6 @@
     do { \
         if (_ret_val < 0) { \
           fprintf(stderr, "%s\n", SDL_GetError()); \
-          destroy_game(_game); \
           return _ret; \
         } \
     } while (0)

@@ -7,7 +7,10 @@ int main(void) {
 
     game.state = GAME_STATE_RUNNING;
     while(game.state != GAME_STATE_QUIT) {
-        if(!render_game(&game)) return 1;
+        if(!render_game(&game)) {
+            destroy_game(&game);
+            return 1;
+        }
 
         game_poll_events(&game);
     }
