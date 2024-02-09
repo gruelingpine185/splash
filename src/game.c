@@ -4,6 +4,7 @@
 #include <SDL3/SDL_init.h>
 #include <SDL3/SDL_video.h>
 #include <SDL3/SDL_render.h>
+#include <SDL3/SDL_events.h>
 #include <SDL3/SDL_error.h>
 
 #include "game.h"
@@ -51,4 +52,19 @@ int render_game(game_t* _game) {
     checkSDL(SDL_RenderClear(_game->renderer), 0);
 
     return 1;
+}
+
+void game_poll_events(game_t* _game) {
+    if(!_game) return;
+
+    SDL_Event event;
+    while(SDL_PollEvent(&event)) {
+        switch(event.type) {
+            case SDL_EVENT_QUIT:
+                _game->state = GAME_STATE_QUIT;
+                break;
+            default:
+                break;
+        }
+    }
 }
