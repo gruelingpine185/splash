@@ -2,10 +2,10 @@
 #define MATH_H
 
 
-typedef struct vec2f vec2f;
+typedef struct vec2f_t vec2f_t;
 
 
-struct vec2f {
+struct vec2f_t {
     float x;
     float y;
 };
