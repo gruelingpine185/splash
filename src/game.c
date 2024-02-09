@@ -20,12 +20,19 @@ int create_game(game_t *_game) {
 
     checkSDL(SDL_InitSubSystem(SDL_INIT_VIDEO), 0);
 
-    checkSDL((!_game->window), 0);
     _game->window = SDL_CreateWindow(GAME_NAME, 960, 540, 0);
+    if(!_game->window) {
+        fprintf(stderr, "%s\n", SDL_GetError());
+        return 0;
+    }
+
     _game->renderer = SDL_CreateRenderer(_game->window,
                                         NULL,
                                         SDL_RENDERER_PRESENTVSYNC);
-    checkSDL((!_game->renderer), 0);
+    if(!_game->renderer) {
+        fprintf(stderr, "%s\n", SDL_GetError());
+        return 0;
+    }
 
     return 1;
 }
