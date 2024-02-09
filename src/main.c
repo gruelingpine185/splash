@@ -3,7 +3,10 @@
 
 int main(void) {
     game_t game = {0};
-    if(!create_game(&game)) return 1;
+    if(!create_game(&game)) {
+        destroy_game(&game);
+        return 1;
+    }
 
     game.state = GAME_STATE_RUNNING;
     while(game.state != GAME_STATE_QUIT) {
