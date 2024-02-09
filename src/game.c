@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdio.h>
 
 #include <SDL3/SDL_init.h>
@@ -8,29 +9,27 @@
 #include "game.h"
 
 
-int create_game(game_t* _game) {
+#define checkSDL(_ret_val, _ret) \
+    do { \
+        if (_ret_val < 0) { \
+          fprintf(stderr, "%s\n", SDL_GetError()); \
+          destroy_game(_game); \
+          return _ret; \
+        } \
+    } while (0)
+
+
+int create_game(game_t *_game) {
     if(!_game) return 0;
 
-    if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
-        fprintf(stderr, "%s\n", SDL_GetError());
-        return 0;   
-    }
-
+    checkSDL(SDL_InitSubSystem(SDL_INIT_VIDEO), 0);
     _game->window = SDL_CreateWindow("Umbra", 800, 600, 0);
-    if(_game->window) {
-        fprintf(stderr, "%s\n", SDL_GetError());
-        destroy_game(_game);
-        return 0;
-    }
 
+    checkSDL((!_game->window), 0);
     _game->renderer = SDL_CreateRenderer(_game->window,
                                         NULL,
                                         SDL_RENDERER_PRESENTVSYNC);
-    if(!_game->renderer) {
-        fprintf(stderr, "%s\n", SDL_GetError());
-        destroy_game(_game);
-        return 0;
-    }
+    checkSDL((!_game->renderer), 0);
 
     return 1;
 }
