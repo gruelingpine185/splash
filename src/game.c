@@ -49,7 +49,7 @@ void destroy_game(game_t* _game) {
 int render_game(game_t* _game) {
     if(!_game) return 0;
 
-    checkSDL(SDL_SetRenderDrawColor(_game->renderer, 0xff, 0xff, 0xff, 0xff), 0);
+    checkSDL(SDL_SetRenderDrawColor(_game->renderer, 0x18, 0x18, 0x18, 0xff), 0);
     checkSDL(SDL_RenderClear(_game->renderer), 0);
 
     return 1;
