@@ -10,13 +10,18 @@
 #include "game.h"
 
 
+#ifndef GAME_NAME
+    #define GAME_NAME ""
+#endif // GAME_NAME
+
+
 int create_game(game_t *_game) {
     if(!_game) return 0;
 
     checkSDL(SDL_InitSubSystem(SDL_INIT_VIDEO), 0);
-    _game->window = SDL_CreateWindow("Umbra", 800, 600, 0);
 
     checkSDL((!_game->window), 0);
+    _game->window = SDL_CreateWindow(GAME_NAME, 960, 540, 0);
     _game->renderer = SDL_CreateRenderer(_game->window,
                                         NULL,
                                         SDL_RENDERER_PRESENTVSYNC);
