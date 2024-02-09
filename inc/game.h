@@ -26,6 +26,8 @@ extern "C" {
 #endif // __cplusplus
 int create_game(game_t* _game);
 void destroy_game(game_t* _game);
+int render_game(game_t* _game);
+void game_poll_events(game_t* _game);
 #ifdef __cplusplus
 }
 #endif // __cplusplus

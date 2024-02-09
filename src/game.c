@@ -43,3 +43,12 @@ void destroy_game(game_t* _game) {
     SDL_QuitSubSystem(SDL_INIT_VIDEO);
     SDL_Quit();
 }
+
+int render_game(game_t* _game) {
+    if(!_game) return 0;
+
+    checkSDL(SDL_SetRenderDrawColor(_game->renderer, 0xff, 0xff, 0xff, 0xff), 0);
+    checkSDL(SDL_RenderClear(_game->renderer), 0);
+
+    return 1;
+}
