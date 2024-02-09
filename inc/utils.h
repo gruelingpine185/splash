@@ -2,6 +2,8 @@
 #define UTILS_H
 
 
+#include <stdio.h>
+
 #include <SDL3/SDL_error.h>
 
 
