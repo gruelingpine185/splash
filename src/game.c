@@ -52,6 +52,7 @@ int render_game(game_t* _game) {
     checkSDL(SDL_SetRenderDrawColor(_game->renderer, 0x18, 0x18, 0x18, 0xff), 0);
     checkSDL(SDL_RenderClear(_game->renderer), 0);
 
+    checkSDL(SDL_RenderPresent(_game->renderer), 0);
     return 1;
 }
 
