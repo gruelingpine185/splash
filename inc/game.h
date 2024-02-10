@@ -2,34 +2,31 @@
 #define GAME_H
 
 
-typedef enum {
-    GAME_STATE_QUIT,
-    GAME_STATE_RUNNING
-} game_state_t;
+namespace splash {
+    class game;
+    class window;
+
+    enum class game_state;
+
+    
+    enum class game_state {
+        quit,
+        running
+    };
 
 
-typedef struct game_t game_t;
+    class game {
+    public:
+        game(const game& _game) = delete;
+        game();
+        ~game();
 
-typedef struct SDL_Window SDL_Window;
-typedef struct SDL_Renderer SDL_Renderer;
-
-
-struct game_t {
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    game_state_t state;
-};
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif // __cplusplus
-int create_game(game_t* _game);
-void destroy_game(game_t* _game);
-int render_game(game_t* _game);
-void game_poll_events(game_t* _game);
-#ifdef __cplusplus
+        void poll_events(window& _win);
+        void render(window& _win);
+        game_state get_state() const;
+    private:
+        game_state _state;
+    };
 }
-#endif // __cplusplus
 
 #endif // GAME_H

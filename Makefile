@@ -5,17 +5,17 @@ bin_dir := bin
 project_name := splash
 project := $(bin_dir)/$(project_name)
 
-c_headers := $(wildcard $(inc_dir)/*.h)
-c_sources := $(wildcard $(src_dir)/*.c)
-c_objects := $(patsubst $(src_dir)/%.c, $(bin_dir)/%.o, $(c_sources))
+cpp_headers := $(wildcard $(inc_dir)/*.h)
+cpp_sources := $(wildcard $(src_dir)/*.cpp)
+cpp_objects := $(patsubst $(src_dir)/%.cpp, $(bin_dir)/%.o, $(cpp_sources))
 
-c_std = -std=c11
-c_opt = -O2
-c_wrn = -Wall -Wextra -pedantic
-c_inc = -Iinc
-c_def = -DGAME_NAME="\"$(project_name)\""
-CC ?= clang
-CFLAGS := $(strip $(c_std) $(c_opt) $(c_wrn) $(c_inc) $(c_def))
+cpp_std = -std=c++17
+cpp_opt = -O2
+cpp_wrn = -Wall -Wextra -pedantic
+cpp_inc = -Iinc
+cpp_def =
+CXX ?= clang
+CXXFLAGS := $(strip $(cpp_std) $(cpp_opt) $(cpp_wrn) $(cpp_inc) $(cpp_def))
 
 
 .PHONY: all clean
@@ -24,11 +24,11 @@ all:
 clean:
 	-rm -rf $(bin_dir)
 
-$(project): $(c_objects)
-	$(CC) $(CFLAGS) -Wl,-rpath,/usr/local/lib $^ -o $@ -lSDL3 -lSDL3_image
+$(project): $(cpp_objects)
+	$(CXX) $(CXXFLAGS) -Wl,-rpath,/usr/local/lib $^ -o $@ -lSDL3
 
-$(bin_dir)/%.o: $(src_dir)/%.c $(wildcard $(inc_dir)/%.h) $(bin_dir)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(bin_dir)/%.o: $(src_dir)/%.cpp $(wildcard $(inc_dir)/%.h) $(bin_dir)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(bin_dir):
 	-mkdir $@
