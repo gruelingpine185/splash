@@ -2,17 +2,16 @@
 #define UTILS_H
 
 
-#include <stdio.h>
+#include <stdexcept>
 
 #include <SDL3/SDL_error.h>
 
 
-#define checkSDL(_ret_val, _ret) \
+#define checkSDL(_ret_val) \
     do { \
-        if (_ret_val < 0) { \
-          fprintf(stderr, "%s\n", SDL_GetError()); \
-          return _ret; \
+        if(_ret_val < 0) { \
+            throw std::runtime_error(SDL_GetError()); \
         } \
-    } while (0)
+    } while(0)
 
 #endif // UTILS_H
