@@ -4,6 +4,7 @@
 #include <SDL3/SDL_error.h>
 #include <SDL3/SDL_video.h>
 #include <SDL3/SDL_render.h>
+#include <SDL3/SDL_events.h>
 
 #include "window.h"
 
@@ -46,6 +47,10 @@ namespace splash {
         this->_h = _h;
         this->_title = _title;
         this->create();
+    }
+
+    void window::handle_events(const SDL_Event& _event) {
+        (void) _event;
     }
 
     int window::get_w() const {

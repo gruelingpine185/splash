@@ -7,6 +7,7 @@
 
 struct SDL_Window;
 struct SDL_Renderer;
+struct SDL_Event;
 
 
 namespace splash {
@@ -22,6 +23,7 @@ namespace splash {
 
         void create(int _w, int _h, const std::string& _title);
         void create();
+        void handle_events(const SDL_Event& _event);
         int get_w() const;
         int get_h() const;
         std::string get_title() const;
