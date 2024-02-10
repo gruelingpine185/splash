@@ -13,7 +13,7 @@ cpp_std = -std=c++17
 cpp_opt = -O2
 cpp_wrn = -Wall -Wextra -pedantic
 cpp_inc = -Iinc
-cpp_def = -DGAME_NAME="\"$(project_name)\""
+cpp_def =
 CXX ?= clang
 CXXFLAGS := $(strip $(cpp_std) $(cpp_opt) $(cpp_wrn) $(cpp_inc) $(cpp_def))
 
