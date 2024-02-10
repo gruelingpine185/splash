@@ -25,7 +25,7 @@ clean:
 	-rm -rf $(bin_dir)
 
 $(project): $(c_objects)
-	$(CC) $(CFLAGS) -Wl,-rpath,/usr/local/lib $^ -o $@ -lSDL3 -lSDL3_image
+	$(CC) $(CFLAGS) -Wl,-rpath,/usr/local/lib $^ -o $@ -lSDL3
 
 $(bin_dir)/%.o: $(src_dir)/%.c $(wildcard $(inc_dir)/%.h) $(bin_dir)
 	$(CC) $(CFLAGS) -c $< -o $@
