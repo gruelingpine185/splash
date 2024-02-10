@@ -7,7 +7,7 @@
 
 struct SDL_Window;
 struct SDL_Renderer;
-struct SDL_Event;
+union SDL_Event;
 
 
 namespace splash {
@@ -28,6 +28,7 @@ namespace splash {
         int get_h() const;
         std::string get_title() const;
         SDL_Renderer* get_renderer() const;
+        SDL_Event get_event() const;
     private:
         SDL_Window* _window;
         SDL_Renderer* _renderer;
