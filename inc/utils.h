@@ -14,4 +14,11 @@
         } \
     } while(0)
 
+#define checkSDL2(_ret_val) \
+    do { \
+        if(!(_ret_val)) { \
+            throw std::runtime_error(SDL_GetError()); \
+        } \
+    } while(0)
+
 #endif // UTILS_H
