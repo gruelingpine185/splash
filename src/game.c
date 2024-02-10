@@ -12,6 +12,12 @@
 #ifndef GAME_NAME
     #define GAME_NAME ""
 #endif // GAME_NAME
+#ifndef GAME_WIDTH
+    #define GAME_WIDTH 960
+#endif // GAME_WIDTH
+#ifndef GAME_HEIGHT
+    #define GAME_HEIGHT 540
+#endif // GAME_HEIGHT
 
 
 int create_game(game_t *_game) {
@@ -19,7 +25,7 @@ int create_game(game_t *_game) {
 
     checkSDL(SDL_InitSubSystem(SDL_INIT_VIDEO), 0);
 
-    _game->window = SDL_CreateWindow(GAME_NAME, 960, 540, 0);
+    _game->window = SDL_CreateWindow(GAME_NAME, GAME_WIDTH, GAME_HEIGHT, 0);
     if(!_game->window) {
         fprintf(stderr, "%s\n", SDL_GetError());
         return 0;
