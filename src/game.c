@@ -32,8 +32,8 @@ int create_game(game_t *_game) {
     }
 
     _game->renderer = SDL_CreateRenderer(_game->window,
-                                        NULL,
-                                        SDL_RENDERER_PRESENTVSYNC);
+                                            NULL,
+                                            SDL_RENDERER_PRESENTVSYNC);
     if(!_game->renderer) {
         fprintf(stderr, "%s\n", SDL_GetError());
         return 0;
