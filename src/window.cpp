@@ -6,6 +6,7 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_events.h>
 
+#include "utils.h"
 #include "window.h"
 
 
@@ -34,12 +35,11 @@ namespace splash {
                                             this->_w,
                                             this->_h,
                                             0);
-        if(!this->_window) throw std::runtime_error(SDL_GetError());
-
+        checkSDL2(this->_window);
         this->_renderer = SDL_CreateRenderer(this->_window,
                                                 nullptr,
                                                 SDL_RENDERER_PRESENTVSYNC);
-        if(!this->_renderer) throw std::runtime_error(SDL_GetError());
+        checkSDL2(this->_renderer);
     }
 
     void window::create(int _w, int _h, const std::string& _title) {
