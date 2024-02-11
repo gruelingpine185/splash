@@ -53,19 +53,19 @@ namespace splash {
         (void) _event;
     }
 
-    int window::get_w() const {
+    int window::w() const {
         return this->_w;
     }
 
-    int window::get_h() const {
+    int window::h() const {
         return this->_h;
     }
   
-    std::string window::get_title() const {
+    std::string window::title() const {
         return this->_title;
     }
 
-    SDL_Renderer* window::get_renderer() const {
+    SDL_Renderer* window::renderer() const {
         return this->_renderer;
     }
 }

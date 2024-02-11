@@ -24,11 +24,11 @@ namespace splash {
         void create(int _w, int _h, const std::string& _title);
         void create();
         void handle_events(const SDL_Event& _event);
-        int get_w() const;
-        int get_h() const;
-        std::string get_title() const;
-        SDL_Renderer* get_renderer() const;
-        SDL_Event get_event() const;
+        int w() const;
+        int h() const;
+        std::string title() const;
+        SDL_Renderer* renderer() const;
+        SDL_Event event() const;
     private:
         SDL_Window* _window;
         SDL_Renderer* _renderer;

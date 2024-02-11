@@ -29,9 +29,9 @@ namespace splash {
     }
 
     void game::render(window& _win) {
-        checkSDL(SDL_SetRenderDrawColor(_win.get_renderer(), 0x14, 0x14, 0x14, 0xff));
-        checkSDL(SDL_RenderClear(_win.get_renderer()));
-        checkSDL(SDL_RenderPresent(_win.get_renderer()));
+        checkSDL(SDL_SetRenderDrawColor(_win.renderer(), 0x14, 0x14, 0x14, 0xff));
+        checkSDL(SDL_RenderClear(_win.renderer()));
+        checkSDL(SDL_RenderPresent(_win.renderer()));
     }
 
     game_state game::get_state() const {
